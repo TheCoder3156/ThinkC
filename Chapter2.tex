@@ -15,17 +15,17 @@ you want in {\tt main()}.  For example, to output more than one line:
 
 \begin{verbatim}
 
-  #include <stdio.h>
-  #include <stdlib.h>
-
-  /* main: generate some simple output */
-
-  int main (void)
-  {
+    #include <stdio.h>
+    #include <stdlib.h>
+  
+    /* main: generate some simple output */
+  
+    int main(void)
+    {
         printf ("Hello World.\n");		    /* output one line */
         printf ("How are you?\n");		    /* output another line */       
         return (EXIT_SUCCESS);
-  }
+    }
 
 \end{verbatim}
 %
@@ -47,12 +47,14 @@ statements all on one line.  You can do this by leaving out
 the {\tt $\backslash$n} from the first {\tt printf}:
 
 \begin{verbatim}
-  int main (void)
-  {
+
+    int main(void)
+    {
         printf ("Goodbye, ");
         printf ("cruel world!\n");	     
         return (EXIT_SUCCESS);
-  }
+    }
+    
 \end{verbatim}
 %
 In this case the output appears on a single line as
@@ -66,12 +68,14 @@ not affect the behavior of the program.  For example, I
 could have written:
 
 \begin{verbatim}
-  int main(void)
-  {
-  printf("Goodbye, ");
-  printf("cruel world!\n");	     
-  return(EXIT_SUCCESS);
-  }
+
+    int main(void)
+    {
+    printf("Goodbye, ");
+    printf("cruel world!\n");	     
+    return(EXIT_SUCCESS);
+    }
+    
 \end{verbatim}
 %
 This program would compile and run just as well as the original.
@@ -79,8 +83,10 @@ The breaks at the ends of lines (newlines) do not affect
 the program's behavior either, so I could have written:
 
 \begin{verbatim}
-  int main(void){printf("Goodbye, ");printf("cruel world!\n");
-  return(EXIT_SUCCESS);}
+
+    int main(void){printf("Goodbye, ");printf("cruel world!\n");
+    return(EXIT_SUCCESS);}
+    
 \end{verbatim}
 %
 That would work, too, although you have probably noticed that
@@ -113,7 +119,7 @@ An integer is a whole number like 1 or 17.  You can output
 integer values in a similar way as you output strings:
 
 \begin{verbatim}
-   printf("%i\n", 17);
+    printf("%i\n", 17);
 \end{verbatim}
 %
 When we look at the \texttt{printf()} statement more closely, we
@@ -132,7 +138,7 @@ enclosed in single quotes, like {\tt 'a'} or {\tt '5'} - that is the character 5
 You can output character values in a similar way:
 
 \begin{verbatim}
-   printf("%c\n", '}');
+    printf("%c\n", '}');
 \end{verbatim}
 %
 This example outputs a single closing curly-bracket on a line
@@ -145,7 +151,7 @@ should be clear that the first is a string, the second is a character
 and the third is an integer.  The reason this distinction is important
 should become clear soon.
 
-\section {Variables}
+\section{Variables}
 \index{variable}
 \index{value}
 
@@ -458,11 +464,11 @@ the following program:
 
 \begin{verbatim}
 
-  int hour, minute;
-  hour = 11;
-  minute = 59;
-  printf ("Number of minutes since midnight: %i\n", hour*60 + minute);
-  printf ("Fraction of the hour that has passed: %i\n", minute/60);
+    int hour, minute;
+    hour = 11;
+    minute = 59;
+    printf("Number of minutes since midnight: %i\n", hour*60 + minute);
+    printf("Fraction of the hour that has passed: %i\n", minute/60);
 
 \end{verbatim}
 %
@@ -493,8 +499,8 @@ A possible alternative in this case is to calculate a percentage
 rather than a fraction:
 
 \begin{verbatim}
-    printf ("Percentage of the hour that has passed: ");
-    printf ("%i\n", minute*100/60);
+    printf("Percentage of the hour that has passed: ");
+    printf("%i\n", minute*100/60);
 \end{verbatim}
 %
 The result is:
@@ -604,7 +610,7 @@ integers and we know how to output values; it turns out we can
 do both at the same time:
 
 \begin{verbatim}
-    printf ("%i\n", 17 * 3);
+    printf("%i\n", 17 * 3);
 \end{verbatim}
 %
 Actually, I shouldn't say ``at the same time,'' since in reality
@@ -650,8 +656,8 @@ To read a single character from the user, you can use the  {\tt \%c}
 format specifier. The {\tt \%c} format specifier tells {\tt scanf()} to read a 
 character and store it in the variable. For example:
 \begin{verbatim}
-char c;
-scanf("%c", &c);
+    char c;
+    scanf("%c", &c);
 \end{verbatim}
 %
 
@@ -659,8 +665,8 @@ In this example, {\tt scanf()} will read a character from the user's input and s
 
 To read an integer, you can use the  {\tt \%d} or  {\tt \%i}  format specifier. These specifiers tells {\tt scanf()} to read an integer and store it in the variable.  For example:
 \begin{verbatim}
-int x;
-scanf("%d", &x);
+    int x;
+    scanf("%d", &x);
 \end{verbatim}
 In this example, {\tt scanf()} will read an integer from the user's input and store it in the variable x.
 
@@ -678,20 +684,20 @@ When using  {\tt scanf()}, you first need to print a prompt to let the user know
 For example, to prompt the user for an integer, you can use:
 
 \begin{verbatim}
-	int x;
-	printf("%s", "Enter an integer: \n");
-	scanf("%d", &x);
+    int x;
+    printf("%s", "Enter an integer: \n");
+    scanf("%d", &x);
 \end{verbatim}
 %
 In this example, the {\tt printf()} function is used to print the message "Enter an integer: "  
 with a new line at the end. The user can enter an integer and the {\tt scanf()}  
 function is used to read the integer from the user and store it in the variable x.
 
-{\bf Caution} It is considered insecure to use{\tt printf()} to print a string without the string format specifier.  
+{\bf Caution} it is considered insecure to use {\tt printf()} to print a string without the string format specifier.  
 
 \begin{verbatim}
-	printf( "Enter an integer: \n");  //works but is consdered insecure
-	printf("%s", "Enter an integer: \n");  // this is considered a secure use
+    printf("Enter an integer: \n");  // Works but is consdered insecure
+    printf("%s", "Enter an integer: \n");  // This is considered a secure use
 \end{verbatim}
 %
 
@@ -701,11 +707,11 @@ which can be useful if you want to print multiple strings on separate lines.
 
 For example:
 \begin{verbatim}
-puts("Welcome to the program");
-puts("Enter an integer:");
+    puts("Welcome to the program");
+    puts("Enter an integer:");
 \end{verbatim}
 %
-\section{Mixing Calls to Scan Integers and Character}
+\section{Mixing Calls to Scan Integers and Characters}
 \index{scanning}
 \index{input}
 It is important to note that when mixing calls to {\tt scanf()} to read different types, newline characters can cause problems. 
@@ -716,41 +722,41 @@ One way to manage this is to include a space in the quotes before the format spe
 The space indicates to ignore whitespace characters.
 
 \begin{verbatim}
-	
-	#include <stdio.h>
-	#include <stdlib.h>
-	
-	int main (void)
-	{
-			int age;
-			char initial;
-			puts("enter your age");
-			scanf("%d", &age);
-			puts("enter your first intial");
-			scanf(" %c", &initial); //note the space after " and before %
-	}
-	
+	   
+	   #include <stdio.h>
+	   #include <stdlib.h>
+	   
+	   int main(void)
+	   {
+	       int age;
+	       char initial;
+	       puts("Enter your age");
+	       scanf("%d", &age);
+	       puts("Enter your first intial");
+	       scanf(" %c", &initial); // Note the space after " and before %
+	   }
+	   
 \end{verbatim}
 %
  Another way to manage this is to insert a second call to scan the newline.
 
 \begin{verbatim}
-	
-	#include <stdio.h>
-	#include <stdlib.h>
-	
-	int main (void)
-	{
-			int age;
-			char initial;
-			char newline;
-   			puts("enter your age");
-			scanf("%d", &age);
-			scanf("%c", &newline); //this will scan the extra new line
-			puts("enter your first intial");
-			scanf("%c", &initial); 
-	}
-	
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    
+    int main(void)
+    {
+        int age;
+        char initial;
+        char newline;
+        puts("enter your age");
+        scanf("%d", &age);
+        scanf("%c", &newline); // This will scan the extra new line
+        puts("enter your first intial");
+        scanf("%c", &initial); 
+    }
+    
 \end{verbatim}
 %
 
