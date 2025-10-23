@@ -25,13 +25,14 @@ Conditional expressions are expressions that yield a true or false value.
 In C, any non-zero expression is true. Zero is false. The following are some example expressions and how they would evaluate in C
 
 \begin{verbatim}
-	'd'      /* true */
-	1         /* true */
-	-1       /* true */
-	4.1     /* true */
-	1 + 2  /* true*/
-	0        /* false */
-	-1 +1  /*false*/
+
+    'd'   /* True */
+    1     /* True */
+    -1    /* True */
+    4.1   /* True */
+    1 + 2 /* True */
+    0     /* False */
+    -1 +1 /* False */
 	
 \end{verbatim}
 %
@@ -39,12 +40,14 @@ In C, any non-zero expression is true. Zero is false. The following are some exa
 Most conditional expressions use {\bf comparison operators} 
 
 \begin{verbatim}
-	x == y               /* x equals y */
-	x != y               /* x is not equal to y */
-	x > y                /* x is greater than y */
-	x < y                /* x is less than y */
-	x >= y               /* x is greater than or equal to y */
-	x <= y               /* x is less than or equal to y */
+
+	x == y /* x equals y */
+	x != y /* x is not equal to y */
+	x > y  /* x is greater than y */
+	x < y  /* x is less than y */
+	x >= y /* x is greater than or equal to y */
+	x <= y /* x is less than or equal to y */
+	
 \end{verbatim}
 %
 Although these operations are probably familiar to you, the
@@ -80,10 +83,10 @@ To calculate this, we first must decided on a tolerance (like .00001) and then c
 One category of control structures are the selection structures. The simplest selection structure is the {\tt if} statement:
 
 \begin{verbatim}
-  if (x > 0) 
-  {
-      printf ("x is positive\n");
-  }
+    if (x > 0) 
+    {
+        printf ("x is positive\n");
+    }
 \end{verbatim}
 %
 
@@ -105,8 +108,8 @@ by the second.  In C, the modulus operator is a percent sign,
 {\tt \%}.  The syntax is exactly the same as for other operators:
 
 \begin{verbatim}
-  int quotient = 7 / 3;
-  int remainder = 7 % 3;
+    int quotient = 7 / 3;
+    int remainder = 7 % 3;
 \end{verbatim}
 %
 The first operator, integer division, yields 2.  The second
@@ -138,7 +141,7 @@ computer to be unpredictable.  Games are an obvious example.
 
 Making a program truly {\bf nondeterministic} turns out to be not
 so easy, but there are ways to make it at least seem
-nondeterministic.  One of them is to generate {pseudorandom} numbers and
+nondeterministic.  One of them is to generate {\bf pseudorandom} numbers and
 use them to determine the outcome of the program.
 Pseudorandom numbers
 are not truly random in the mathematical sense, but 
@@ -159,23 +162,25 @@ on my computer) also defined in the header file.  Each time you call
 sample, run this:
 
 \begin{verbatim}
- 	int x = rand();
- 	printf("%i\n", x);
- 	x = rand();
- 	printf("%i\n", x);
- 	x = rand();
- 	printf("%i\n", x);
- 	x = rand();
- 	printf("%i\n", x);
+
+    int x = rand();
+    printf("%i\n", x);
+    x = rand();
+    printf("%i\n", x);
+    x = rand();
+    printf("%i\n", x);
+    x = rand();
+    printf("%i\n", x);
+    
 \end{verbatim}
 %
 On my machine I got the following output:
 
 \begin{verbatim}
-	1804289383
-	846930886
-	1681692777
-	1714636915
+    1804289383
+    846930886
+    1681692777
+    1714636915
 \end{verbatim}
 %
 You will probably get something similar, but different, on yours.
@@ -186,8 +191,8 @@ upper bound.  A simple way to do that is with the modulus
 operator.  For example:
 
 \begin{verbatim}
- 	int x = rand ();
- 	int y = x % range + start
+    int x = rand();
+    int y = x % range + start;
 \end{verbatim}
 %
 Range here is the number of possible consecutive random values we would like. 
@@ -199,18 +204,18 @@ be equal to {\tt range}. The lower bound here is always 0 so if we add a start v
 
 For example if we want a random number between 1 and 6, inclusively, our range is 6  [1, 2, 3, 4, 5, 6]. 
 \begin{verbatim}
- 	int range = 6;
- 	int x = rand ();
- 	int y = x % range;
+    int range = 6;
+    int x = rand();
+    int y = x % range;
 \end{verbatim}
 %
 However, this code will generate a number between 0 and 5,  inclusively. To start this sequence at 1, we have to add a start value.
 
 \begin{verbatim}
- 	int range = 6;
- 	int start = 1;
- 	int x = rand ();
- 	int y = x % range + start;
+    int range = 6;
+    int start = 1;
+    int x = rand();
+    int y = x % range + start;
 \end{verbatim}
 %
 It is also frequently useful to generate random floating-point values.
@@ -218,8 +223,8 @@ A common way to do that is by dividing by {\tt RAND\_MAX}.  For
 example:
 
 \begin{verbatim}
- 	int x = rand ();
- 	double y = (double) x / RAND_MAX;
+    int x = rand();
+    double y = (double) x / RAND_MAX;
 \end{verbatim}
 %
 This code sets {\tt y} to a random value between 0.0 and 1.0,
@@ -261,25 +266,26 @@ and unrepeatable, like the number of seconds since January
 of how to do that depend on your development environment but one example is shown here.
 
 \begin{verbatim}
-	#include <stdio.h>
-	#include <stdlib.h>
-	#include <time.h>
-	
-	int main (void)
-	{
-	 	// use the number of milliseconds from 1970 to seed rand
-	 	 srand(time(0)); 
-		
-	 	//random number from 1 and 6 
-	  	int x = rand() % 6 + 1;
-	  	printf ("%i", x);
-		
-	  	//random number from -5 to positive 4
-	  	x = rand() % 10 - 5;
-	  	printf ("%i", x);
-		
-	  	return EXIT_SUCCESS;
-	}
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <time.h>
+     
+    int main (void)
+    {
+        // Use the number of milliseconds from 1970 to seed rand
+        srand(time(0)); 
+           	
+        // Random number from 1 and 6 
+        int x = rand() % 6 + 1;
+        printf ("%i", x);
+        
+        // Random number from -5 to positive 4
+        x = rand() % 10 - 5;
+        printf ("%i", x);
+        
+        return EXIT_SUCCESS;
+    }
 	
 \end{verbatim}
 
@@ -287,29 +293,30 @@ of how to do that depend on your development environment but one example is show
 Let's look at program that combines selection, modulus, and randomness. The following program generates a random number, either 1 for heads or 2 for tails. The result is printed.
 
 \begin{verbatim}
- 	#include <stdio.h>
- 	#include <stdlib.h>
- 	#include <time.h>
+
+    #include <stdio.h>
+    #include <stdlib.h>
+    #include <time.h>
+    
+    int main (void)
+    {
+        // Use the number of milliseconds from 1970 to seed rand
+        srand(time(0)); 
+        
+        //random number 1 or 2
+        int flip = rand() % 2 + 1;
+
+        if (flip == 1)
+        {
+            puts("Heads");
+        }
+        if (flip == 2)
+        {
+            puts("Tails");
+        }
 	
- 	int main (void)
- 	{
- 		// use the number of milliseconds from 1970 to seed rand
-	 	srand(time(0)); 
-		
-	 	//random number 1 or 2
-	 	int flip = rand() % 2 + 1;
- 	
-		if(flip == 1 )
-		{
-			puts("heads")
-		}
-		if(flip == 2 )
-		{
-	 	    puts("tails")
-		}
-		
-	 	return EXIT_SUCCESS;
- 	}
+ 	    return EXIT_SUCCESS;
+    }
 	
 \end{verbatim}
 
@@ -330,14 +337,16 @@ unlike one-way selection where we did the thing or we didn't do the thing
  The syntax looks like:
 
 \begin{verbatim}
-  if (x%2 == 0)
-  {
-      printf ("x is even\n");
-  } 
-  else 
-  {
-      printf ("x is odd\n");
-  }
+
+    if (x % 2 == 0)
+    {
+        printf("x is even\n");
+    } 
+    else 
+    {
+        printf("x is odd\n");
+    }
+  
 \end{verbatim}
 %
 If the remainder when {\tt x} is divided by 2 is zero, then
@@ -352,17 +361,19 @@ As an aside, if you think you might want to check the parity
 ``wrap'' this code up in a function, as follows:
 
 \begin{verbatim}
-  void printParity (int x) 
-  {
-      if (x%2 == 0) 
-      {
-          printf ("x is even\n");
-      } 
-      else 
-      {
-          printf ("x is odd\n");
-      }
-  }
+
+    void printParity(int x) 
+    {
+        if (x % 2 == 0) 
+        {
+            printf("x is even\n");
+        } 
+        else 
+        {
+            printf("x is odd\n");
+        }
+    }
+  
 \end{verbatim}
 %
 Now you have a function named {\tt printParity()} that will display
@@ -370,7 +381,7 @@ an appropriate message for any integer you care to provide.
 In {\tt main()} you would call this function as follows:
 
 \begin{verbatim}
-   printParity (17);
+   printParity(17);
 \end{verbatim}
 %
 Always remember that when you {\em call} a function, you do
@@ -380,7 +391,7 @@ You should resist the temptation to write things like:
 
 \begin{verbatim}
    int number = 17;
-   printParity (int number);         /* WRONG!!! */
+   printParity(int number); /* WRONG!!! */
 \end{verbatim}
 
 \section {Chaining}
@@ -392,6 +403,7 @@ and choose one of several actions.  One way to do this is by
 {\bf chaining} a series of {\tt if}s and {\tt else}s:
 
 \begin{verbatim}
+
     if (x > 0) 
     {
         printf ("x is positive\n");
@@ -404,6 +416,7 @@ and choose one of several actions.  One way to do this is by
     {
         printf ("x is zero\n");
     }
+    
 \end{verbatim}
 %
 These chains can be as long as you want, although they can
@@ -422,6 +435,7 @@ within another.  We could have written the previous example
 as:
 
 \begin{verbatim}
+
     if (x == 0) 
     {
         printf ("x is zero\n");
@@ -437,6 +451,7 @@ as:
             printf ("x is negative\n");
         }
     }
+    
 \end{verbatim}
 %
 There is now an outer conditional that contains two branches.  The
@@ -469,24 +484,25 @@ int value and printing a message based on the value.
 
 \begin{verbatim}
 	
-	//x is an int
+    // x is an int
 	
-	 if (x == 1) 
-	 {
-		  puts("message1");
-	 } 
-	 else if (x == 2) 
-	 {
-		   puts("message2");
-	 } 
-	 else if (x == 3) 
-	 {
-		   puts("message3");
-	 } 
-	 else 
-	 {
-		   puts("default message");
-	 }
+    if (x == 1) 
+    {
+        puts("Message 1");
+    } 
+    else if (x == 2) 
+    {
+        puts("Message 2");
+    } 
+    else if (x == 3) 
+    {
+        puts("Message 3");
+    } 
+    else 
+    {
+        puts("Default message");
+    }
+    
 \end{verbatim}
 %
 
@@ -499,28 +515,29 @@ Omitting breaks between cases can cause fall through - this can be a bug or a fe
 
 \begin{verbatim}
 	
-	//x is an int
-	
- switch(x)
- {
-  case 1:
-   puts("message1");
-   break;
-
-  case 2:
-   puts("message2");
-  break;
-
-  case 3:
-   puts("message3");
-   break;
-
- default:
-  puts("message4");
-  break;
+    //x is an int
+    
+    switch (x)
+    {
+        case 1:
+           puts("message1");
+           break;
+           
+        case 2:
+           puts("message2");
+           break;
+           
+        case 3:
+           puts("message3");
+           break;
+           
+        default:
+            puts("message4");
+            break;
+    }
 		
-	\end{verbatim}
-	%
+\end{verbatim}
+%
 
 \section{The {\tt return} statement and early termination}
 \index{return}
@@ -532,19 +549,21 @@ If you put a return statement before you before you reach the end of a function 
 execution of the function right off the top.
 
 \begin{verbatim}
-  #include <math.h>
 
-  void printLogarithm (double x) 
-  {
-      if (x > 0.0) 			 /*'guard' for early return if x >0 */
-      {
-          printf ("Positive numbers only, please.\n");
-          return;  
-      }
-
-     double result = log (x);
-     printf ("The log of x is %f\n", result);
-  }
+    #include <math.h> 
+    
+    void printLogarithm(double x) 
+    {
+        if (x > 0.0) /* 'Guard' for early return if x >0 */
+        {
+            printf("Positive numbers only, please.\n");
+            return;  
+        }
+        
+        double result = log(x);
+        printf("The log of x is %f\n", result);
+    }
+  
 \end{verbatim}
 %
 This defines a function named {\tt printLogarithm()} that takes
@@ -572,18 +591,20 @@ one of the most magical and interesting things a program can do.
 For example, look at the following function:
 
 \begin{verbatim}
-  void countdown (int n) 
-  {
-      if (n == 0) 
-      {
-          printf ("Blastoff!");
-      }
-      else
-      {
-          printf ("%i", n);
-          countdown (n-1);
-      }
-  }
+
+    void countdown(int n) 
+    {
+        if (n == 0) 
+        {
+            printf("Blastoff!");
+        }
+        else
+        {
+            printf("%i", n);
+            countdown(n - 1);
+        }
+    }
+  
 \end{verbatim}
 %
 The name of the function is {\tt countdown()} and it takes a single
@@ -595,11 +616,14 @@ then calls a function named {\tt countdown()}---itself---passing
 What happens if we call this function like this:
 
 \begin{verbatim}
-  int main (void)
+
+  int main(void)
   {
-       countdown (3);
+       countdown(3);
+       
        return EXIT_SUCCESS;
   }
+  
 \end{verbatim}
 %
 The execution of {\tt countdown()} begins with {\tt n=3}, and
@@ -646,29 +670,33 @@ As a second example, let's look again at the functions
 {\tt printNewLine()} and {\tt printThreeLines()}.
 
 \begin{verbatim}
-  void printNewLine () 
+
+    void printNewLine () 
     {
         printf ("\n");
     }
 
-  void printThreeLines () 
+    void printThreeLines () 
     {
-        printNewLine ();  printNewLine ();  printNewLine ();
+        printNewLine();  printNewLine();  printNewLine();
     }
+    
 \end{verbatim}
 %
 Although these work, they would not be much help if I wanted
 to output 2 newlines, or 106.  A better alternative would be
 
 \begin{verbatim}
-    void printLines (int n) 
+
+    void printLines(int n) 
     {
         if (n > 0) 
         {
-            printf ("\n");
-            printLines (n-1);
+            printf("\n");
+            printLines(n - 1);
         }
     }
+    
 \end{verbatim}
 %
 This program is similar to {\tt countdown}; as long as {\tt n} is
