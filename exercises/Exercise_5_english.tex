@@ -38,58 +38,58 @@ What is the output of the following program?  Is there any dead code in this pro
 The purpose of this exercise is to make sure you understand logical operators and the flow of execution through fruitful methods.
 
 \begin{verbatim}
-  #define TRUE 1
-  #define FALSE 0
 
-  short isHoopy (int);
-  short isFrabjuous (int);
+    #define TRUE 1
+    #define FALSE 0
+    
+    short isHoopy(int);
+    short isFrabjuous(int);
+    
+    int main(void) 
+    {
+        short flag1 = isHoopy(202);
+        short flag2 = isFrabjuous(202);
+        printf("%i\n", flag1);
+        printf("%i\n", flag2);
+        if (flag1 && flag2) 
+        {
+            puts("ping!");
+        }
+        if (flag1 || flag2) 
+        {
+            puts("pong!");
+        }
+        return EXIT_SUCCESS;
+    }
 
-  int main (void) 
-  {
-      short flag1 = IsHoopy (202);
-      short flag2 = IsFrabjuous (202);
-      printf ("%i\n", flag1);
-      printf ("%i\n", flag2);
-      if (flag1 && flag2) 
-      {
-          puts ("ping!");
-      }
-      if (flag1 || flag2) 
-      {
-          puts("pong!");
-      }
-      return EXIT_SUCCESS;
-  }
-
-short isHoopy (int x)
-{
-	short hoopyFlag;
-	if (x%2 == 0) 
-	{
-		hoopyFlag = TRUE;
-	} 
-	else 
-	{
-		hoopyFlag = FALSE;
-	}
-	return hoopyFlag;
-}
-
-short isFrabjuous (int x) 
-{
-	short frabjuousFlag;
-	if (x > 0) 
-	{
-		frabjuousFlag = TRUE;
-	}
-	else 
-	{
-		frabjuousFlag = FALSE;
-	}
-	return frabjuousFlag;
-}
-
-  
+    short isHoopy(int x)
+    {
+        short hoopyFlag;
+        if (x % 2 == 0) 
+        {
+            hoopyFlag = TRUE;
+        } 
+        else 
+        {
+            hoopyFlag = FALSE;
+        }
+        return hoopyFlag;
+    }
+    
+    short isFrabjuous(int x) 
+    {
+        short frabjuousFlag;
+        if (x > 0) 
+        {
+            frabjuousFlag = TRUE;
+        }
+        else 
+        {
+            frabjuousFlag = FALSE;
+        }
+        return frabjuousFlag;
+    }
+     
 \end{verbatim}
 \end{exercise}
 
@@ -103,29 +103,31 @@ short isFrabjuous (int x)
 and type in the following two functions, their prototypes a main function.
 
 \begin{verbatim}
-  int functionOne (int m, int n) 
-  {
-      if (m == n) 
-      {
-          return n;
-      } 
-      else 
-      {
-          return m + functionOne (m+1, n);
-      }
-  }
 
-  int functionTwo (int m, int n) 
-  {
-      if (m == n) 
-      {
-          return n;
-      } 
-      else 
-      {
-          return n * functionTwo (m, n-1);
-      }
-  }
+    int functionOne(int m, int n) 
+    {
+        if (m == n) 
+        {
+            return n;
+        } 
+        else 
+        {
+            return m + functionOne(m + 1, n);
+        }
+    }
+    
+    int functionTwo(int m, int n) 
+    {
+        if (m == n) 
+        {
+            return n;
+        } 
+        else 
+        {
+            return n * functionTwo(m, n - 1);
+        }
+    }
+    
 \end{verbatim}
 %
 \item Write a few lines in {\tt main()} to test these functions.

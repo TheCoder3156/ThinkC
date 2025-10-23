@@ -5,11 +5,11 @@
 \begin{exercise}
 Use the variables initialized below to evaluate each expression. State if C would consider the resulting value as true or false.
 \begin{verbatim}
-	int m = 0;
-	int n = 1;
-	char p = 'k';
-	char s = 'F'
-	double t = 1.2    
+    int m = 0;
+    int n = 1;
+    char p = 'k';
+    char s = 'F';
+    double t = 1.2;   
 \end{verbatim}
 \begin{enumerate}
 	\item {\tt m / n}
@@ -27,36 +27,39 @@ questions below.
 
 \begin{verbatim}
 
-   #include <stdio.h>
-   #include <stdlib.h>
-  
-   void zippo (int, int);
-   void baffle (int);
-  
-   int main (void)
-   {
-  	 zippo (5, 13);
-  	 return EXIT_SUCCESS;
-   }
-   void baffle (int output)
-   {
-  	 printf ("%i\n",output);
-  	 zippo (12, -5);
-   }
-  
-   void zippo (int quince, int flag)
-   {
-    	if (flag < 0)
-    	{
-  	    	printf ("%i zoop\n", quince);
-     	}
-    	else
-    	{
-  	    	printf ("rattle ");
-  	    	baffle (quince);
-  	    	printf ("boo-wa-ha-ha\n");
-    	}
+    #include <stdio.h>
+    #include <stdlib.h>
+    
+    void zippo (int, int);
+    void baffle (int);
+    
+    int main (void)
+    {
+        zippo(5, 13);
+        
+        return EXIT_SUCCESS;
     }
+    
+    void baffle (int output)
+    {
+        printf("%i\n", output);
+        zippo(12, -5);
+    }
+    
+    void zippo (int quince, int flag)
+    {
+        if (flag < 0)
+        {
+            printf("%i zoop\n", quince);
+        }
+        else
+        {
+            printf("rattle ");
+            baffle(quince);
+            printf("boo-wa-ha-ha\n");
+        }
+    }
+    
 \end{verbatim}
 %
 \begin{enumerate}
@@ -174,7 +177,7 @@ input value on the computer screen.
 
 % Kapitel 5 (Return)
 %Schreiben Sie dazu eine Funktion {\tt AsciiToNumber()} welche ein
-%{\tt int} als Typ und als Argument besitzt. Übergeben Sie der Funktion
+%{\tt int} als Typ und als Argument besitzt. ï¿½bergeben Sie der Funktion
 %den eingelesenen Wert und 
 
 
@@ -183,7 +186,7 @@ input value on the computer screen.
 % String--Ausgabe!
 
 %\begin{exercise}
-%Lesen Sie das folgende Programm. Notieren Sie die Ausgabe die während der
+%Lesen Sie das folgende Programm. Notieren Sie die Ausgabe die wï¿½hrend der
 %Abarbeitung des Programms erzeugt wird.
 
 %\begin{verbatim}

@@ -8,19 +8,20 @@
 %changed the condition on the loop so that it will terminate
 %(was this *supposed* to be an infinite loop?)
 \begin{verbatim}
+
     void loop(int n) 
     {
         int i = n;
         while (i > 1) 
         {
-            printf ("%i\n",i);
-            if (i%2 == 0) 
+            printf("%i\n", i);
+            if (i % 2 == 0) 
             {
                 i = i/2;
             } 
             else 
             {
-                i = i+1;
+                i = i + 1;
             }
         }
     }
@@ -28,8 +29,10 @@
     int main (void) 
     {
         loop(10);
+        
         return EXIT_SUCCESS;
     }
+    
 \end{verbatim}
 %
 \begin{enumerate}

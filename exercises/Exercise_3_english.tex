@@ -9,18 +9,18 @@
 Evaluate each of the following expressions to determine the resulting value. 
 Use the following variables and values when you evaluate the expressions:
 \begin{verbatim}
-	int x= 2;
-	double y = 1.2;
-	char z = 'A'
+    int x = 2;
+    double y = 1.2;
+    char z = 'A';
 \end{verbatim}
 %
 \begin{enumerate}
 	\item {\tt x + 1}
 	\item {\tt x + y}
-	\item {\tt x/3}
-	\item {\tt x/3.0}
-	\item {\tt (int)y}
-	\item {\tt (int)z}
+	\item {\tt x / 3}
+	\item {\tt x / 3.0}
+	\item {\tt (int) y}
+	\item {\tt (int) z}
 \end{enumerate}
 \end{exercise}
 
@@ -40,36 +40,39 @@ HINT: Start by describing in words what {\tt ping()} and
 {\tt baffle()} do when they are invoked.
 
 \begin{verbatim}
+
  #include <stdio.h>
  #include <stdlib.h>
-
+ 
  void ping(void);
  void baffle(void);
  void zoop(void);
-
- int main (void)
- {
- 	printf ("No, I ");
- 	zoop ();
- 	printf ("I ");
- 	baffle ();
- 	return EXIT_SUCCESS;
-  }
- void ping(void)
- {
- 	printf (".\n"); 
- }
- void baffle(void)
- {
- 	printf("wug");
- 	ping (); 
- }
- void zoop(void)
- {
- 	baffle ();
- 	printf ("You wugga ");
- 	baffle ();
- }
+ 
+    int main(void)
+    {
+        printf("No, I ");
+        zoop();
+        printf("I ");
+        baffle();
+        
+        return EXIT_SUCCESS;
+    }
+    void ping(void)
+    {
+        printf(".\n"); 
+    }
+    void baffle(void)
+    {
+        printf("wug");
+        ping(); 
+    }
+    void zoop(void)
+    {
+        baffle();
+        printf("You wugga ");
+        baffle();
+    }
+    
 \end{verbatim}
 %
 
@@ -138,7 +141,7 @@ Call each of your functions with the given input. Do this three times - each tim
 \label{ex.multadd}
 
 Many computations can be expressed concisely using the ``multadd''
-operation, which takes three operands and computes {\tt a*b + c}.  Some
+operation, which takes three operands and computes {\tt a * b + c}.  Some
 processors even provide a hardware implementation of this operation for
 floating-point numbers.
 
@@ -186,7 +189,7 @@ at the same time, which can be very difficult.
 
 One of the purposes of this exercise is to practice pattern-matching:
 the ability to recognize a specific problem as an instance of a
-general category of problems (think about how these meet the pattern of the multadd function)
+general category of problems (think about how these meet the pattern of the multadd function).
 
 
 \end{exercise}
