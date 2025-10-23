@@ -30,8 +30,8 @@ You can create floating-point variables and assign values to them
 using the same syntax we used for the other types.  For example:
 
 \begin{verbatim}
-  double pi;
-  pi = 3.14159;
+    double pi;
+    pi = 3.14159;
 \end{verbatim}
 %
 
@@ -44,9 +44,9 @@ Our 4 byte {\tt int}, is reduced to 2 bytes when we use a {\tt a short int}.
 In essence our {\tt double} data type is a {\tt long float}, hence the {\tt \%lf}.
 
 \begin{verbatim}
-	double pi;
-	pi = 3.14159;
-	printf("%lf\n", pi);
+    double pi;
+    pi = 3.14159;
+    printf("%lf\n", pi);
 \end{verbatim}
 %
 
@@ -54,9 +54,9 @@ It is also legal to declare a variable and assign a value to it at the
 same time:
 
 \begin{verbatim}
-  int x = 1;
-  char first_char = "a";
-  double pi = 3.14159;
+    int x = 1;
+    char first_char = "a";
+    double pi = 3.14159;
 \end{verbatim}
 %
 In fact, this syntax is quite common.  A combined declaration
@@ -144,7 +144,7 @@ some other value to it later on:
 \begin{verbatim}
     double pi = 3.14159;
     ...
-    pi = 10.999;  /* probably a logical error in your program */
+    pi = 10.999;  /* Probably a logical error in your program */
 \end{verbatim}
 %
 
@@ -162,7 +162,7 @@ never be changed again during the runtime of the program.
     const double PI = 3.14159;
     printf ("Pi: %lf\n", PI);
      ...
-    PI = 10.999;  /* wrong, error caught by the compiler  */
+    PI = 10.999; /* Wrong, error caught by the compiler */
 \end{verbatim}
 %
 
@@ -173,7 +173,7 @@ In order to visually separate constants from variables we will use
 all uppercase letters in their names. 
 
 
-%todo: typecasting überarbeiten  - siehe deutsche Folien
+%todo: typecasting ï¿½berarbeiten  - siehe deutsche Folien
 
 \section{Converting types}
 \label{rounding}
@@ -199,8 +199,8 @@ the target type, set in parenthesis before the expression {\tt (Type)}.
 For example:
 
 \begin{verbatim}
-  const double PI = 3.14159;
-  int x = (int) PI;
+    const double PI = 3.14159;
+    int x = (int) PI;
 \end{verbatim}
 %
 The {\tt (int)} operator casts the value of PI into an integer, so {\tt x} gets the value
@@ -210,28 +210,28 @@ This is essentially  rounding down, even if the fraction part is 0.99999999.
 Of course we can cast an {\tt int} to a {\tt double} without any worry about loss of 
 information because we are only adding .0 and not changing the value. 
 \begin{verbatim}
-	 int x = 3;
-	 double y = (double) x;  /* y = 3.0 */
+    int x = 3;
+    double y = (double) x; /* y = 3.0 */
 \end{verbatim}
 %
 We can also directly convert from {\tt char} to {\tt int} because each ASCII character is stored 
 as an integer value. If an integer is between 0 and 255 (inclusively) we can also cast to the ASCII character.
 \begin{verbatim}
- 	char lettter = 'A'
- 	int x = 65;
- 	char letterX = (char)x;
- 	int y = (int) letter;
+    char lettter = 'A'
+    int x = 65;
+    char letterX = (char) x;
+    int y = (int) letter;
 \end{verbatim}
 %
 Type can change how C treats values and operations.  
 We saw that dividing two {\tt int}s results in integer division. 
 However,  when mixing {\tt int} and {\tt double} in arithmetic operations the result will always be a {\tt double}. C will implicitly cast values depending on the operation being performed. Some operations/conversion don't really ``make sense.'' Can you cast a  {\tt double} like 3.12 to a {\tt char}? We can add an {\tt int} to a {\tt char} (because they are really both integers), but can you add a {\tt double} and a {\tt char}?
 \begin{verbatim}
- 	int x = 3;
- 	double y = (double) x;   /* explicit cast */
- 	double z = x;  /*implicit cast*/
- 	double m = x + 3;  /* implcit cast*/
- 	/*m = 6.0 even though x + 3 = 6*/
+    int x = 3;
+    double y = (double) x; /* Explicit cast */
+    double z = x;         /* Implicit cast */
+    double m = x + 3;     /* Implicit cast */
+    /*m = 6.0 even though x + 3 = 6*/
 \end{verbatim}
 %
 
@@ -264,9 +264,9 @@ The math functions are invoked using a syntax that is similar to
 mathematical notation:
 
 \begin{verbatim}
-     double log = log (17.0);
-     double angle = 1.5;
-     double height = sin (angle);
+    double log = log(17.0);
+    double angle = 1.5;
+    double height = sin(angle);
 \end{verbatim}
 %
 The first example sets {\tt log} to the logarithm of 17, base
@@ -286,9 +286,9 @@ calculate it using the {\tt acos} function.  The arccosine
 $\pi$ is -1.
 
 \begin{verbatim}
-  const double PI = acos(-1.0);
-  double degrees = 90;
-  double angle = degrees * 2 * PI / 360.0;
+    const double PI = acos(-1.0);
+    double degrees = 90;
+    double angle = degrees * 2 * PI / 360.0;
 \end{verbatim}
 %
 Before you can use any of the math functions, you have to
@@ -299,7 +299,7 @@ program we included a header file named {\tt stdio.h} using
 an {\bf include} statement:
 
 \begin{verbatim}
-      #include <stdio.h>
+    #include <stdio.h>
 \end{verbatim}
 %
 {\tt stdio.h} contains information about input and output
@@ -329,7 +329,7 @@ composed}, meaning that you use one expression as part of another.
 For example, you can use any expression as an argument to a function:
 
 \begin{verbatim}
-    double x = cos (angle + PI/2);
+    double x = cos(angle + PI/2);
 \end{verbatim}
 %
 This statement takes the value of {\tt PI}, divides it by two and
@@ -340,7 +340,7 @@ You can also take the result of one function and pass it as
 an argument to another:
 
 \begin{verbatim}
-    double x = exp (log (10.0));
+    double x = exp(log(10.0));
 \end{verbatim}
 %
 This
@@ -362,10 +362,12 @@ begins, but the syntax for {\tt main()} is the same as for any other
 function definition:
 
 \begin{verbatim}
-   void NAME ( LIST OF PARAMETERS ) 
-   {
-       STATEMENTS
-   }
+
+    void NAME ( LIST OF PARAMETERS ) 
+    {
+        STATEMENTS
+    }
+    
 \end{verbatim}
 %
 You can make up any name you want for your function, except
@@ -379,10 +381,12 @@ the parentheses containing the keyword {\tt (void)} in it's definition.  The fir
 of functions we are going to write also have no parameters, so the
 definition looks like this:
 \begin{verbatim}
- 	 void printNewLine(void) 
- 	 {
-  	        	printf ("%c", '\n');
- 	 }
+
+    void printNewLine(void) 
+    {
+        printf("%c", '\n');
+    }
+ 	 
 \end{verbatim}
 %
 This function is named {\tt printNewLine()}. It contains only a single
@@ -399,7 +403,7 @@ and the type of value it returns (if any). Prototypes are written above the main
 Function definitions should be written below main. The prototype for the  {\tt printNewLine()} function would be:
 \vskip 0.5em
 \begin{verbatim}
-	 	void printNewLine (void);
+    void printNewLine(void);
 \end{verbatim}
 %
 \vskip 0.5em
@@ -413,27 +417,31 @@ Once we have a prototype and definition, we can call this few function in {\tt m
 is similar to the way we call the built-in C commands:
 \vskip 0.5em
 \begin{verbatim}
- 	void printNewLine (void);  /*function prototype*/
 
- 	 int main (void) {
-    	 printf ("First Line.\n");
-     	printNewLine ();                  /*function call*/
-     	printf ("Second Line.\n");
-     	return EXIT_SUCCESS;
-  	}
-   void printNewLine (void)   /*function definition*/
-   {
-       printf ("\n");
-   }
+    void printNewLine(void);      /* Function prototype */
+
+    int main(void)
+    {
+        printf("First Line.\n");
+        printNewLine();           /* Function call */
+        printf("Second Line.\n");
+        
+        return EXIT_SUCCESS;
+    }
+    void printNewLine(void)       /* Function definition */
+    {
+        printf("\n");
+    }
+   
 \end{verbatim}
 %
 The output of this program is:
 \vskip 0.5em
 
 \begin{verbatim}
-   First line.
+    First line.
 
-   Second line.
+    Second line.
 \end{verbatim}
 %
 Notice the extra space between the two lines.  What if we wanted
@@ -441,38 +449,44 @@ more space between the lines?  We could call the same
 function repeatedly:
 
 \begin{verbatim}
-  int main (void)
-  {
-      printf ("First Line.\n");
-      printNewLine ();
-      printNewLine ();
-      printNewLine ();
-      printf ("Second Line.\n");
-  }
+
+    int main(void)
+    {
+        printf("First Line.\n");
+        printNewLine();
+        printNewLine();
+        printNewLine();
+        printf("Second Line.\n");
+    }
+  
 \end{verbatim}
 %
 Or we could write a new function, named {\tt printThreeLines()}, that 
 prints three new lines:
 
 \begin{verbatim}
-  	void printNewLine (void); 
-  	void printThreeLines (void);
-  	int main (void)
-  	{
-    		printf ("First Line.\n");
-    		printThreeLines ();
-	    	printf ("Second Line.\n");
-    		return EXIT_SUCCESS;
- 	 }
-   void printThreeLines (void)
-  	{
-	    	printNewLine ();  printNewLine ();  printNewLine (); 
-	    	 /*this is legal but maybe better with each on it's own line*/
-  	}
-   void printNewLine (void)  
-   {
-  	    printf ("\n");
-   }
+
+    void printNewLine(void); 
+    void printThreeLines(void);
+    
+    int main(void)
+    {
+        printf("First Line.\n");
+        printThreeLines();
+        printf("Second Line.\n");
+        
+        return EXIT_SUCCESS;
+    }
+    void printThreeLines(void)
+    {
+        printNewLine();  printNewLine();  printNewLine(); 
+        /* This is legal but maybe better with each on it's own line */
+    }
+    void printNewLine(void)  
+    {
+        printf("\n");
+    }
+   
 \end{verbatim}
 %
 You should notice a few things about this program:
@@ -500,7 +514,7 @@ create all these new functions.  Actually, there are a lot
 of reasons, but this example only demonstrates two:
 
 \begin{enumerate}
-\item Functions are a form of abstraction and abstraction reduces cognitive load (makes it easier to think)
+\item Functions are a form of abstraction and abstraction reduces cognitive load (makes it easier to think).
 
 \item Creating a new function gives you an opportunity to
 give a name to a group of statements. Functions can simplify a program
@@ -513,7 +527,7 @@ repetitive code.  For example, a short way to print nine consecutive
 new lines is to call {\tt printThreeLines()} three times.  How would you
 print 27 new lines?
 
-\item Functions isolate code into contained areas. This can make it easier to fix issues, make changes, and find bugs
+\item Functions isolate code into contained areas. This can make it easier to fix issues, make changes, and find bugs.
 
 \end{enumerate}
 
@@ -523,30 +537,33 @@ Pulling together all the code fragments from the previous
 section, the whole program looks like this:
 
 \begin{verbatim}
-  #include <stdio.h>
-  #include <stdlib.h>
 
- void printNewLine (void);
- void printThreeLines (void);
-  int main (void)
-  {
-     printf ("First Line.\n");
-     printThreeLines ();
-     printf ("Second Line.\n");
-     return EXIT_SUCCESS;
-  }
+    #include <stdio.h>
+    #include <stdlib.h>
 
-	void printNewLine (void) 
-	{
-	     printf ("\n");
-	}
+    void printNewLine(void);
+    void printThreeLines(void);
+    
+    int main (void)
+    {
+        printf("First Line.\n");
+        printThreeLines();
+        printf("Second Line.\n");
+        
+        return EXIT_SUCCESS;
+    }
 
-	void printThreeLines (void)
-	{
-	   printNewLine ();  
-	   printNewLine ();  
-	   printNewLine ();
-	}
+    void printNewLine(void) 
+    {
+        printf("\n");
+    }
+
+    void printThreeLines(void)
+    {
+        printNewLine();  
+        printNewLine();  
+        printNewLine();
+    }
 
 \end{verbatim}
 %
@@ -560,7 +577,7 @@ uses or calls {\tt printThreeLine()}.  Similarly, {\tt printThreeLine()} calls
 Without function prototypes,  the definition of each
 function would need to appear above the place it is used -- filling the 
 top of our program with definitions and putting main down at the bottom appears above the place where it is used. 
-With prototypes, the order of function definitions doesn't matter (so long as the prototypes are at the top of the program)
+With prototypes, the order of function definitions doesn't matter (so long as the prototypes are at the top of the program).
 
 
 \section {Programs with multiple functions}
@@ -607,10 +624,12 @@ function definition, the parameter list indicates the type of
 each parameter.  For example:
 
 \begin{verbatim}
-  void printTwice (char phil) 
-  {
-      printf("%c%c\n", phil, phil);
-  }
+
+    void printTwice(char phil) 
+    {
+        printf("%c%c\n", phil, phil);
+    }
+  
 \end{verbatim}
 %
 This function takes a single parameter, named {\tt phil}, that
@@ -629,11 +648,13 @@ and it provides the value that replaces the formal parameter in the definition.
 For example, we might have a {\tt main()} function like this:
 
 \begin{verbatim}
-  int main (void) 
-  {
-      printTwice ('a');
-      return EXIT_SUCCESS;
-  }
+
+    int main(void) 
+    {
+        printTwice('a');
+        return EXIT_SUCCESS;
+    }
+  
 \end{verbatim}
 %
 The {\tt char} value you provide is called an {\bf argument}, and we
@@ -645,12 +666,15 @@ Alternatively, if we had a {\tt char} variable, we could
 use it as an argument instead:
 
 \begin{verbatim}
-  int main () 
-  {
-      char argument = 'b';
-      PrintTwice (argument);
-      return EXIT_SUCCESS;
-  }
+
+    int main(void) 
+    {
+        char argument = 'b';
+        PrintTwice(argument);
+        
+        return EXIT_SUCCESS;
+    }
+  
 \end{verbatim}
 %
 Notice something very important here: the name of the variable we pass
@@ -718,12 +742,14 @@ that you have to declare the type of every parameter.  For
 example
 
 \begin{verbatim}
-  void printTime (int hour, int minute) 
-  {
-    printf ("%i", hour);
-    printf (":");
-    printf ("%i", minute);
-  }
+
+    void printTime(int hour, int minute) 
+    {
+        printf("%i", hour);
+        printf(":");
+        printf("%i", minute);
+    }
+  
 \end{verbatim}
 %
 It might be tempting to write {\tt (int hour, minute)}, but
@@ -743,7 +769,7 @@ In this case, the compiler can tell the type of {\tt hour}
 and {\tt minute} by looking at their declarations.  It is
 unnecessary and illegal to include the type when you pass them
 as arguments.  The correct
-syntax is {\tt printTime (hour, minute);}.
+syntax is {\tt printTime(hour, minute);}.
 
 \section {Functions with results}
 \index{fruitful function}
