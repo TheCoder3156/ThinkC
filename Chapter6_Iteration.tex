@@ -18,10 +18,10 @@ effect of the second assignment is to replace the old value
 of the variable with a new value.
 
 \begin{verbatim}
-  int fred = 5;
-  printf ("%i", fred);
-  fred = 7;
-  printf ("%i", fred);
+    int fred = 5;
+    printf("%i", fred);
+    fred = 7;
+    printf("%i", fred);
 \end{verbatim}
 %
 The output of this program is {\tt 57}, because the first
@@ -57,9 +57,9 @@ In C, an assignment statement can make two variables equal,
 but they don't have to stay that way!
 
 \begin{verbatim}
-  int a = 5;
-  int b = a;     /* a and b no have the same value*/
-  a = 3;         /* a and b are no longer have the same value */
+    int a = 5;
+    int b = a; /* a and b no have the same value */
+    a = 3;     /* a and b are no longer have the same value */
 \end{verbatim}
 %
 The third line changes the value of {\tt a} but it does not
@@ -68,8 +68,8 @@ change the value of {\tt b}, and so they are no longer equal.
 The ability to make multiple assignments to a variable means we can {\bf self assign} variables:
 
 \begin{verbatim}
-	  int a = 5;  
-	  a = a + 1;       
+    int a = 5;  
+    a = a + 1;       
 \end{verbatim}
 %
 Assignment has the lowest precedent. 
@@ -86,12 +86,14 @@ Self assignment is actually very common. In fact, C has operators specifically f
 Several of these operators follow:
 
  \begin{verbatim}
- 	int x = 3;
- 	x += 2;				/* means x = x + 2 */      
- 	x *= 4;				/* means x = x * 4  */      
- 	x -= 6;				/* means x = x - 6  */      
- 	x /= 6;				/* means x = x / 6   */    
- 	x %=2;			 /* means x = x % 2 */  
+ 
+ 	  int x = 3;
+ 	  x += 2; /* Means x = x + 2 */      
+ 	  x *= 4; /* Means x = x * 4 */      
+ 	  x -= 6; /* Means x = x - 6 */      
+ 	  x /= 6; /* Means x = x / 6 */    
+ 	  x %= 2; /* Means x = x % 2 */ 
+ 	   
  \end{verbatim}
  %
 For a very specific set of self assignment, we have an even shorter way to write it. 
@@ -100,34 +102,40 @@ Decrementing means subtracting one from a number.
 Incrementing and decrementing are so common they have 
 their own operators $++$ for increment and $--$ for decrementing.
 
- \begin{verbatim}
-  int x = 5;
-  x++;         					 //add 1 to x
-  printf("%i\n", x);	  //prints 6
-   x--;         				 //sutracts 1 from x
-  printf("%i\n", x);  	//prints 5
+\begin{verbatim}
+ 
+    int x = 5;
+    x++;               // Add 1 to x
+    printf("%i\n", x); // Prints 6
+    x--;               // Subtracts 1 from x
+    printf("%i\n", x); // Prints 5
+    
 \end{verbatim}
 %
- The increment/decrement operator can be placed before the variable (pre-increment/pre-decrement) or after the variable (post-increment/post-decrement). When using the pre-operators, the value is modified then utilized in an expression. When the post-operators are used, the value is utilized then modified. 
-  \begin{verbatim}
-  int x = 1;
-  int y = 1;
-  printf("%i\n", x++);  //prints 1, but x = 2 when completed
-  printf("%i\n", ++y); //prints 2 and y = 2 when completed
-  printf("%i\n", x);  //prints 2
-  printf("%i\n", y);  //prints 2
- \end{verbatim}
+The increment/decrement operator can be placed before the variable (pre-increment/pre-decrement) or after the variable (post-increment/post-decrement). When using the pre-operators, the value is modified then utilized in an expression. When the post-operators are used, the value is utilized then modified. 
+\begin{verbatim}
+
+    int x = 1;
+    int y = 1;
+    printf("%i\n", x++); // Prints 1, but x = 2 when completed
+    printf("%i\n", ++y); // Prints 2 and y = 2 when completed
+    printf("%i\n", x);   // Prints 2
+    printf("%i\n", y);   // Prints 2
+    
+\end{verbatim}
  %
 This behavior can be confusing and being careless with them can lead to errors. 
 The best is to never mix the increment and decrement operators with other expressions. 
 They should be executed on a line alone.
-  \begin{verbatim}
-	int x = 1;
-	int y = 1;
-	 x++;
-	 ++y;
-	printf("%i\n", x);  //prints 2
-	printf("%i\n", y);  //prints 2
+\begin{verbatim}
+
+    int x = 1;
+    int y = 1;
+    x++;
+    ++y;
+    printf("%i\n", x); // Prints 2
+    printf("%i\n", y); // Prints 2
+    
 \end{verbatim}
 %
 \section{Iteration}
@@ -156,15 +164,17 @@ These are repetition structures - they repeat stuff.
 We can write {\tt countdown()} program using a {\tt while} statement:
 
 \begin{verbatim}
-  void countdown (int n) 
-  {
-      while (n > 0) 
-      {
-          printf ("%i\n", n);
-          n = n-1;
-      }
-      printf ("Blastoff!\n");
-  }
+
+    void countdown(int n) 
+    {
+        while (n > 0) 
+        {
+            printf("%i\n", n);
+            n = n - 1;
+        }
+        printf("Blastoff!\n");
+    }
+    
 \end{verbatim}
 %
 You can almost read a {\tt while} statement as if it were
@@ -217,21 +227,24 @@ eventually we have to get to zero.  In other cases it is not
 so easy to tell:
 
 \begin{verbatim}
-  void sequence (int n) 
-  {
-      while (n != 1) 
-      {
-          printf ("%i\n", n);
-          if (n%2 == 0)       /* n is even */
-          {          
-              n = n / 2;
-          } 
-          else                /* n is odd */
-          {                  
-              n = n*3 + 1;
-          }
-      }
-  }
+
+    void sequence(int n) 
+    {
+        while (n != 1) 
+        {
+            printf("%i\n", n);
+            
+            if (n % 2 == 0)    /* n is even */
+            {          
+                n = n / 2;
+            } 
+            else               /* n is odd */
+            {                  
+                n = n * 3 + 1;
+            }
+        }
+    }
+    
 \end{verbatim}
 %
 The condition for this loop is {\tt n != 1}, so the loop
@@ -271,16 +284,18 @@ The while loop is the most universal loop, but any while loop to work properly, 
 All of these components are needed for a loop to work. Let's identify these pieces from one of our previous loops. 
 
 \begin{verbatim}
-	void countdown (int n) 
-	{
-		 //#1 n has an initial value when passed to the function
-		  while (n > 0) //#2 this is a test on the variable
-	 	{
-		 	  printf ("%i\n", n);
-		 	  n = n-1;  //#3 this is an assignment on the variable
-	 	}
-	 	printf ("Blastoff!\n");
-	}
+
+    void countdown(int n) 
+    {
+        // #1 n has an initial value when passed to the function
+        while (n > 0) // #2 This is a test on the variable
+        {
+            printf("%i\n", n);
+            n = n - 1;  // #3 This is an assignment on the variable
+        }
+	 	printf("Blastoff!\n");
+    }
+	
 \end{verbatim}
 %
 \index{loops!counting}
@@ -288,90 +303,100 @@ Now that we have a basic strategy for laying out our while loops, let's examine 
 
 in a counting loop we start out counter with an initial value. Our condition will test if the count has yet to reach a specific limit. At each iteration we increment the count. 
 \begin{verbatim}
-		//#1 count has an initial value of zero
-		int count = 0;
-		
-		while (count  < 10) //#2 this is a test on the variable
-		{
-			  printf ("%i\n", count);  //do something in the loop
-			  count++;   //#3 this is an assignment on the variable
-		}
+
+    // #1 Count has an initial value of zero
+    int count = 0;
+    
+    while (count  < 10) // #2 This is a test on the variable
+    {
+        printf ("%i\n", count); // Do something in the loop
+        count++;                // #3 This is an assignment on the variable
+    }
+    
 \end{verbatim}
 %
 
 \index{loops!sentinel}
 Another common pattern we see it the {\bf sentinel loop}. A sentient is like a guard on watch. This loop will keep iterating until a special value is seen by the guard.  
 \begin{verbatim}
- 	int value;
- 	puts("enter a grade from 0 to 100. Enter a negative number to stop");
- 	scanf(" %i", &value);  //#1 get an intial value before the loop
-	
- 	while (value >= 0) //#2 test for a sentinel value
- 	{
-	  	 printf ("%i\n", value);  //do something in the loop
-		
-	    //#3 this is an assignment on the variable
-	    //we need to prompt and scan again
-	     puts("enter a grade from 0 to 100. Enter a negative number to stop");
-	     scanf(" %i", &value);  //this is an assignment
- 	}
+
+    int value;
+    puts("Enter a grade from 0 to 100. Enter a negative number to stop");
+    scanf(" %i", &value); // #1 Get an intial value before the loop
+    
+    while (value >= 0) // #2 Test for a sentinel value
+    {
+        printf ("%i\n", value);  // Do something in the loop
+        
+        // #3 This is an assignment on the variable
+        // We need to prompt and scan again
+        puts("Enter a grade from 0 to 100. Enter a negative number to stop");
+        scanf(" %i", &value);  // This is an assignment
+    }
+ 	  
 \end{verbatim}
 %
 \index{loops!user-terminated}
 We can look at another sentinel, but we will call this a {\bf user terminated loop}. Like our sentinel, this uses user input to end a program.
 \begin{verbatim}
-	char choice;
-	puts("start a program y or n");
-	scanf(" %c", &choice);  //#1 get an intial value before the loop
-	
-	while (choice == 'y') //#2 test for a sentinel value
-	{
-		 //run a wholoe program
-		
-		  //#3 this is an assignment on the variable
-		  //we need to prompt and scan again
-		
-		  puts("Do you want to run the progam again");
-		  scanf(" %c", &choice); 
-	}
+
+    char choice;
+    puts("Start a program y or n?");
+    scanf(" %c", &choice); // #1 Get an intial value before the loop
+    
+    while (choice == 'y') // #2 Test for a sentinel value
+    {
+        // Run a whole program
+        
+        // #3 This is an assignment on the variable
+        // We need to prompt and scan again
+        
+        puts("Do you want to run the progam again?");
+        scanf(" %c", &choice); 
+    }
+    
 \end{verbatim}
 %
 \index{loops!value validation}
 This looping pattern is the value validation pattern. If you need a user to enter a number a bounded value. You can use this loop to ensure a value fits your bound.  In this loop we ask the user for input until an 'y' or an 'n' is entered. All three of our loop components are here, unlabeled. Can you identify them?
 \begin{verbatim}
-	char choice;
-	puts("start a program y or n");
-	scanf(" %c", &choice);  
-	while(choice != 'y' && choice != 'n')
-	{
-		  puts("that is invalid input");
-		  puts("start a program y or n");
-		  scanf(" %c", &choice);  
-	}	
-//more program after this
+
+    char choice;
+    puts("Start a program y or n?");
+    scanf(" %c", &choice);
+    
+    while(choice != 'y' && choice != 'n')
+    {
+        puts("That is invalid input");
+        puts("Start a program y or n");
+        scanf(" %c", &choice);  
+    }
+    
+    // More program after this
 \end{verbatim}
 %
 
 \index{loops!accumulator}
 Accumulators are loops that act to accumulate some value. Accumulator variables act in concert with loops. The variable must be initialized before the loop. It is not usually the control variable of the loop. It accumulates its value in the loop body. Here is an accumulator store the total sum of all the grades. 
 \begin{verbatim}
-	int sum = 0;
-	int value;
-	puts("enter a grade from 0 to 100. Enter a negative number to stop");
-	scanf(" %i", &value);  //#1 get an intial value before the loop
-	
-	while (value >= 0) //#2 test for a sentinel value
-	{
-		
-		sum = sum + value;
-		
-		//#3 this is an assignment on the variable
-		//we need to prompt and scan again
-		puts("enter a grade from 0 to 100. Enter a negative number to stop");
-		scanf(" %i", &value);  //this is an assignment
-	}
 
-   printf("%i\n", sum);
+    int sum = 0;
+    int value;
+    puts("Enter a grade from 0 to 100. Enter a negative number to stop");
+    scanf(" %i", &value); // #1 Get an intial value before the loop
+    
+    while (value >= 0) // #2 Test for a sentinel value
+    {
+        sum = sum + value;
+        
+        // #3 This is an assignment on the variable
+        // We need to prompt and scan again
+        puts("Enter a grade from 0 to 100. Enter a negative number to stop");
+        scanf(" %i", &value);  // This is an assignment
+    }
+
+    printf("%i\n", sum);
+    
 \end{verbatim}
 %
 \section{The for loop}
@@ -386,29 +411,31 @@ The for loop still needs these three things:
 However in a for loop these are all written at the top of the structure.  
 
 \begin{verbatim}
-	 for( intialization ; condition; assignment)
-	 {
-	 }
+	  for ( intialization ; condition; assignment )
+	  {
+	  
+	  }
 \end{verbatim}
 Below we present a counting while loop and its equivalent for loop
 \begin{verbatim}
 
-		//#1  an initial value
-		int i = 0;
-		while (i < 10) //#2 this is a test on the variable
-		{
-		  	printf ("%i\n", i);
-			
-		  	i++;  //#3 re-assignment on the variable
-		}
+    // #1 An initial value
+    int i = 0;
+    while (i < 10) // #2 This is a test on the variable
+    {
+        printf("%i\n", i);
+        
+        i++; // #3 Re-assignment on the variable
+    }
+    
 \end{verbatim}
 %
 \begin{verbatim}
 
-	for (int i; i < 10, i++)  //#1, #2, #3
-	{
-	   	printf ("%i\n", i);
-	}
+    for (int i; i < 10; i++)  // #1, #2, #3
+    {
+        printf("%i\n", i);
+    }
 
 \end{verbatim}
 %
@@ -448,12 +475,14 @@ sequence of values in the left column and their logarithms in the
 right column:
 
 \begin{verbatim}
-  double x = 1.0;
-  while (x < 10.0) 
-  {
-      printf ("%.0f\t%f\n", x ,log(x));
-      x = x + 1.0;
-  }
+
+    double x = 1.0;
+    while (x < 10.0) 
+    {
+        printf("%.0f\t%f\n", x, log(x));
+        x = x + 1.0;
+    }
+    
 \end{verbatim}
 %
 The sequence \verb+\t+ represents a {\bf tab} character.
@@ -474,15 +503,15 @@ A newline character causes the cursor to move on to the next line.
 The output of this program is:
 
 \begin{verbatim}
-   1      0.000000
-   2      0.693147
-   3      1.098612
-   4      1.386294
-   5      1.609438
-   6      1.791759
-   7      1.945910
-   8      2.079442
-   9      2.197225
+    1      0.000000
+    2      0.693147
+    3      1.098612
+    4      1.386294
+    5      1.609438
+    6      1.791759
+    7      1.945910
+    8      2.079442
+    9      2.197225
 \end{verbatim}
 %
 If these values seem odd, remember that the {\tt log()} function uses
@@ -495,7 +524,7 @@ we can use the following formula:
 Changing the output statement to
 
 \begin{verbatim}
-      printf ("%.0f\t%f\n", x, log(x) / log(2.0));
+      printf("%.0f\t%f\n", x, log(x) / log(2.0));
 \end{verbatim}
 %
 yields:
@@ -518,12 +547,14 @@ the logarithms of other powers of two, we could modify the
 program like this:
 
 \begin{verbatim}
+
     double x = 1.0;
     while (x < 100.0) 
     {
-        printf ("%.0f\t%.0f\n", x, log(x) / log(2.0));
+        printf("%.0f\t%.0f\n", x, log(x) / log(2.0));
         x = x * 2.0;
     }
+    
 \end{verbatim}
 %
 Now instead of adding something to {\tt x} each time through
@@ -562,13 +593,15 @@ A good way to start is to write a simple loop that prints
 the multiples of 2, all on one line.
 
 \begin{verbatim}
+
     int i = 1;
     while (i <= 6) 
     {
-        printf("%i   ", i*2);
+        printf("%i   ", i * 2);
         i = i + 1;
     }
     printf("\n");
+    
 \end{verbatim}
 %
 The first line initializes a variable named {\tt i}, which is
@@ -611,16 +644,18 @@ Here's a function that encapsulates the loop from the previous
 section and generalizes it to print multiples of {\tt n}.
 
 \begin{verbatim}
-    void printMultiples (int n)
+
+    void printMultiples(int n)
     {
         int i = 1;
         while (i <= 6) 
         {
-            printf("%i   ", i*n);
+            printf("%i   ", i * n);
             i = i + 1;
         }
         printf("\n");
     }
+    
 \end{verbatim}
 %
 To encapsulate, all I had to do was add the first line,
@@ -647,12 +682,14 @@ different arguments.  In fact, we are going to use another loop to
 iterate through the rows.
 
 \begin{verbatim}
+
     int i = 1;
     while (i <= 6) 
     {
         PrintMultiples (i);
         i = i + 1;
-    }    
+    }  
+      
 \end{verbatim}
 %
 First of all, notice how similar this loop is to the one inside {\tt
@@ -706,7 +743,8 @@ To demonstrate encapsulation again, I'll take the code
 from the previous section and wrap it up in a function:
 
 \begin{verbatim}
-    void printMultTable () 
+
+    void printMultTable() 
     {
         int i = 1;
         while (i <= 6) 
@@ -715,6 +753,7 @@ from the previous section and wrap it up in a function:
             i = i + 1;
         }
     }
+    
 \end{verbatim}
 %
 The process I am demonstrating is a common 
@@ -789,12 +828,12 @@ size, not just the 6x6 table.  You could add a parameter to
 {\tt printMultTable()}:
 
 \begin{verbatim}
-    void printMultTable (int high) 
+    void printMultTable(int high) 
     {
         int i = 1;
         while (i <= high) 
         {
-            PrintMultiples (i);
+            PrintMultiples(i);
             i = i + 1;
         }
     }
@@ -823,26 +862,28 @@ demonstrating that different functions can have parameters
 with the same name (just like local variables):
 
 \begin{verbatim}
-  void PrintMultiples (int n, int high) 
-  {
-      int i = 1;
-      while (i <= high) 
-      {
-          printf ("%i    ", n*i);
-          i = i + 1;
-      }    
-      printf ("\n");
-  }
 
-  void PrintMultTable (int high) 
-  {
-      int i = 1;
-      while (i <= high) 
-      {
-          PrintMultiples (i, high);
-          i = i + 1;
-      }
-  }
+    void PrintMultiples(int n, int high) 
+    {
+        int i = 1;
+        while (i <= high) 
+        {
+            printf ("%i    ", n * i);
+            i = i + 1;
+        }    
+        printf ("\n");
+    }
+    
+    void PrintMultTable(int high) 
+    {
+        int i = 1;
+        while (i <= high) 
+        {
+            PrintMultiples (i, high);
+            i = i + 1;
+        }
+    }
+    
 \end{verbatim}
 %
 Notice that when I added a new parameter, I had to change the first
