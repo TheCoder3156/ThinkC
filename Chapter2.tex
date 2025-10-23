@@ -22,9 +22,10 @@ you want in {\tt main()}.  For example, to output more than one line:
   
     int main(void)
     {
-        printf ("Hello World.\n");		    /* output one line */
-        printf ("How are you?\n");		    /* output another line */       
-        return (EXIT_SUCCESS);
+        printf("Hello World.\n"); /* Output one line */
+        printf("How are you?\n"); /* Output another line */
+               
+        return EXIT_SUCCESS;
     }
 
 \end{verbatim}
@@ -50,9 +51,10 @@ the {\tt $\backslash$n} from the first {\tt printf}:
 
     int main(void)
     {
-        printf ("Goodbye, ");
-        printf ("cruel world!\n");	     
-        return (EXIT_SUCCESS);
+        printf("Goodbye, ");
+        printf("cruel world!\n");
+             
+        return EXIT_SUCCESS;
     }
     
 \end{verbatim}
@@ -72,8 +74,9 @@ could have written:
     int main(void)
     {
     printf("Goodbye, ");
-    printf("cruel world!\n");	     
-    return(EXIT_SUCCESS);
+    printf("cruel world!\n");
+    	     
+    return EXIT_SUCCESS;
     }
     
 \end{verbatim}
@@ -307,11 +310,11 @@ we used to output simple values.
     minute = 59;
     colon = ':';
 
-    printf ("The current time is ");
-    printf ("%i", hour);
-    printf ("%c", colon);
-    printf ("%i", minute);
-    printf ("\n"); 
+    printf("The current time is ");
+    printf("%i", hour);
+    printf("%c", colon);
+    printf("%i", minute);
+    printf("\n"); 
   
 \end{verbatim}
 %
@@ -557,7 +560,7 @@ integers also work on characters.  For example,
 \begin{verbatim}
     char letter;
     letter = 'a' + 1;
-    printf ("%c\n", letter);
+    printf("%c\n", letter);
 \end{verbatim}
 %
 outputs the letter {\tt b}.  Although it is syntactically legal
@@ -572,7 +575,7 @@ legal.
 \begin{verbatim}
     int number;
     number = 'a';
-    printf ("%i\n", number);
+    printf("%i\n", number);
 \end{verbatim}
 %
 The result is 97, which is the number that is used internally
